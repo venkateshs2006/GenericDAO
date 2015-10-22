@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		">
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.data" />
+	
+	<beans:bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+		<beans:property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<beans:property name="jdbcUrl" value="jdbc:mysql://localhost:3306/dao_test" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="" />
+		<beans:property name="disableConnectionTracking" value="true" />
+		<beans:property name="idleConnectionTestPeriodInMinutes" value="1" />
+		<beans:property name="idleMaxAgeInMinutes" value="1" />
+		<beans:property name="maxConnectionsPerPartition" value="10" />
+		<beans:property name="minConnectionsPerPartition" value="1" />
+		<beans:property name="partitionCount" value="2" />
+		<beans:property name="acquireIncrement" value="3" />
+		<beans:property name="statementsCacheSize" value="100" />
+	</beans:bean>
+	
+	<beans:bean id="namedParameterJdbcTemplate" 
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+    	<beans:constructor-arg ref="dataSource"/>
+	</beans:bean>
+
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans:beans>

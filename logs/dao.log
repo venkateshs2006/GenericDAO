@@ -1,0 +1,18 @@
+2015-10-22 19:42:21 main INFO  generic.GenericJdbcDao - INSERT INTO user (id,name,email) VALUES (:id,:name,:email)
+2015-10-22 19:42:21 main INFO  main.App - count:1
+2015-10-22 19:42:21 main INFO  main.App - UserBean [id=1, name=kite, email=xxx@gmail.com]
+2015-10-22 19:42:21 main INFO  generic.GenericJdbcDao - UPDATE user SET name=:name,email=:email WHERE id=:id
+2015-10-22 19:42:21 main INFO  main.App - UserBean [id=1, name=kite, email=yyy@gmail.com]
+2015-10-22 19:42:21 main INFO  main.App - count:0
+2015-10-22 19:45:04 main INFO  generic.GenericJdbcDao - INSERT INTO user (id,name,email) VALUES (:id,:name,:email)
+2015-10-22 19:45:04 main INFO  main.App - count:1
+2015-10-22 19:45:04 main INFO  main.App - 
+2015-10-22 19:45:04 main INFO  generic.GenericJdbcDao - UPDATE user SET name=:name,email=:email WHERE id=:id
+2015-10-22 19:45:04 main INFO  main.App - 
+2015-10-22 19:45:04 main INFO  main.App - count:1
+2015-10-22 23:29:59 main INFO  generic.GenericJdbcDao - INSERT INTO user (id,name,email) VALUES (:id,:name,:email)
+2015-10-22 23:29:59 main INFO  main.App - count:2
+2015-10-22 23:29:59 main INFO  main.App - 
+2015-10-22 23:29:59 main INFO  generic.GenericJdbcDao - UPDATE user SET name=:name,email=:email WHERE id=:id
+2015-10-22 23:29:59 main INFO  main.App - [UserBean [id=2, name=kite, email=xxx@gmail.com], UserBean [id=3, name=kite, email=xxx@gmail.com]]
+2015-10-22 23:29:59 main INFO  main.App - count:2
